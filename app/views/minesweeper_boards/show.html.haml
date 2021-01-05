@@ -1,0 +1,22 @@
+.container
+  :css
+    .row { text-align: center; } 
+  .row
+    .col
+      %h2="Name:"
+    .col
+      %h3=@minesweeper_board.name
+  .row
+    .col
+      %h2="Email:"
+    .col
+      %h3=@minesweeper_board.email
+  .row.justify-content-md-center
+    - board_matrix = @minesweeper_board.as_matrix
+    - (0..@minesweeper_board.width-1).each do |i|
+      - (0..@minesweeper_board.height-1).each do |j|
+        - if board_matrix[i][j] == :empty
+          = "🟩"
+        - else
+          = "💣"
+      %br

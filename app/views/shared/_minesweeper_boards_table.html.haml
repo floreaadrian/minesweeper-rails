@@ -1,0 +1,17 @@
+%table.table
+  %thead.thead-dark
+    %th{:scope => "col"}= "Name"
+    %th{:scope => "col"}= "Email"
+    %th{:scope => "col"}= "Width"
+    %th{:scope => "col"}= "Height"
+    %th{:scope => "col"}= "Bombs"
+    %th{:scope => "col"}= "Created at"
+  %tbody
+  - @boards.each do |board|
+    %tr
+      %td= link_to board.name, board
+      %td= board.email
+      %td= board.width
+      %td= board.height
+      %td= board.number_of_bombs
+      %td= board.created_at.to_time.strftime('%B %e at %l:%M %p')

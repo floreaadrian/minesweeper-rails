@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  x_position: 1
+  y_position: 1
+  minesweeper_board: one
+
+two:
+  x_position: 1
+  y_position: 1
+  minesweeper_board: two

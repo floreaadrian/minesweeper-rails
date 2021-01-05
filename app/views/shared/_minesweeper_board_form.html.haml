@@ -1,0 +1,33 @@
+.container.shape-4
+  .col-sm.text-center
+    = form_with(model: @minesweeper_board, local: true) do |f|
+      = render 'shared/error_messages', object: f.object
+      .row.mt-4
+        .col.text-left
+          %label
+            = "Email"
+          = f.email_field :email, class: "form-control", placeholder: "Email"
+      .row.mt-4
+        .col.text-left
+          %label
+            = "Board name"
+          = f.text_field :name, class: "form-control", placeholder: "Name of the board"
+      .row.mt-4
+        .col.text-left
+          %label
+            = "Height"
+          = f.text_field :height, type: "number",  class: "form-control", placeholder: "Height"
+      .row.mt-4
+        .col.text-left
+          %label
+            = "Width"
+          = f.text_field :width, type: "number", class: "form-control", placeholder: "Width"
+      .row.mt-4
+        .col.text-left
+          %label
+            = "Number of bombs"
+          = f.text_field :number_of_bombs, type: "number", class: "form-control", placeholder: "Number of bombs"
+      .row.mt-4
+        .col
+          = f.submit "Generate Board", class: "btn btn-primary"
+

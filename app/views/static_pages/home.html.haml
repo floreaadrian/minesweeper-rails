@@ -1,0 +1,7 @@
+.row
+  .col-sm
+    = render 'shared/minesweeper_board_form'
+  - if !@boards.nil?
+    .col-sm
+      = render 'shared/minesweeper_boards_table', boards: @boards
+      = link_to 'See all boards', minesweeper_boards_path
