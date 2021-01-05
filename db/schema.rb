@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_01_05_085924) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "minesweeper_boards", force: :cascade do |t|
     t.string "email"
     t.string "name"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_085924) do
   create_table "minesweeper_bombs", force: :cascade do |t|
     t.integer "x_position"
     t.integer "y_position"
-    t.integer "minesweeper_board_id", null: false
+    t.bigint "minesweeper_board_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["minesweeper_board_id"], name: "index_minesweeper_bombs_on_minesweeper_board_id"
