@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import './style.css'
 class MinesweeperBoard extends React.Component {
 
   render () {
@@ -18,6 +19,7 @@ class MinesweeperBoard extends React.Component {
     let firstRow = Array.from(Array(minesweeper_data.width)).map((val,i) => (<th>{i+1}</th>));
     return (
       <React.Fragment>
+      <div className="row justify-content-md-center">
         <table >
           <thead>
             <tr>
@@ -29,6 +31,7 @@ class MinesweeperBoard extends React.Component {
            {items}
           </tbody>
         </table>
+      </div>
       </React.Fragment>
     );
   }
