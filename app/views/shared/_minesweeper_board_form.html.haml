@@ -30,4 +30,30 @@
       .row.mt-4
         .col
           = f.submit "Generate Board", class: "btn btn-primary"
+        .col
+          %input#refresh{class:"btn btn-primary", :type => "button", :value => "Generate Board and Refresh"}/
+  :javascript
+    $(document).on('turbolinks:load', function() {
+      $("#refresh").click(function() {
+          $.ajax({
+             type: "POST",
+             url: '/minesweeper_boards',
+             data: $("form").serialize(),
+             success: function(data) {
+               window.location = '/';
+             },
+             error: function(data){
+               for(var key in data.responseJSON){
+                 formInput = $("#minesweeper_board_"+key);
+                 formInput.addClass('is-invalid');
+                 formInput.after(
+                   '<div class="invalid-feedback">'+
+                     data.responseJSON[key] + '</div>'
+                 )
+               }
+             }
+          });
+      });
+    });
+
 

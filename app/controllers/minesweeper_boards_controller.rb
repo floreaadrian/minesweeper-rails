@@ -9,10 +9,14 @@ class MinesweeperBoardsController < ApplicationController
 
   def create
     @minesweeper_board = MinesweeperBoard.new(minesweeper_board_params)
-    if @minesweeper_board.generate
-      redirect_to minesweeper_board_path(@minesweeper_board)
-    else
-      render 'static_pages/home'
+    respond_to do |format|
+      if @minesweeper_board.generate
+        format.json { render json: { 'response': "succes" } }
+        format.html { redirect_to minesweeper_board_path(@minesweeper_board) }
+      else
+        format.json { render json: @minesweeper_board.errors, status: 500 }
+        format.html { render 'static_pages/home' }
+      end
     end
   end
 
