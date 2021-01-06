@@ -11,12 +11,5 @@
       %h2="Email:"
     .col
       %h3=@minesweeper_board.email
-  .row.justify-content-md-center
-    - board_matrix = @minesweeper_board.as_matrix
-    - (0..@minesweeper_board.width-1).each do |i|
-      - (0..@minesweeper_board.height-1).each do |j|
-        - if board_matrix[i][j] == :empty
-          = "🟩"
-        - else
-          = "💣"
-      %br
+  - board_matrix = @minesweeper_board.as_matrix
+  = react_component "MinesweeperBoard", { minesweeper_data: @minesweeper_board, minesweeper_board: board_matrix }
